@@ -37,10 +37,17 @@ class BPE(object):
             self.version = (0, 1)
             codes.seek(0)
 
-        self.bpe_codes = [tuple(item.split()) for (n, item) in enumerate(codes) if (n < merges or merges == -1)]
+        # self.bpe_codes = [tuple(item.split()) for (n, item) in enumerate(codes) if (n < merges or merges == -1)]
+        self.bpe_codes = []
+        for (n, item) in enumerate(codes):
+            if (n < merges or merges == -1):
+                if len(tuple(item.split())) == 2:
+                    self.bpe_codes.append(tuple(item.split()))
+                else:
+                    print("bug2 {}".format(str(tuple(item.split()))))
 
         # some hacking to deal with duplicates (only consider first instance)
-        self.bpe_codes = dict([(code,i) for (i,code) in reversed(list(enumerate(self.bpe_codes)))])
+        self.bpe_codes = dict([(code, i) for (i, code) in reversed(list(enumerate(self.bpe_codes)))])
 
         self.bpe_codes_reverse = dict([(pair[0] + pair[1], pair) for pair,i in self.bpe_codes.items()])
 
