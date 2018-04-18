@@ -265,10 +265,13 @@ def read_vocabulary(vocab_file, threshold):
     vocabulary = set()
 
     for line in vocab_file:
-        word, freq = line.split()
-        freq = int(freq)
-        if threshold == None or freq >= threshold:
-            vocabulary.add(word)
+        if len(line.split()) == 2:
+            word, freq = line.split()
+            freq = int(freq)
+            if threshold == None or freq >= threshold:
+                vocabulary.add(word)
+        else:
+            print("bug3: {}".format(line))
 
     return vocabulary
 
