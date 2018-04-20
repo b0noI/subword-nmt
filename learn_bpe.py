@@ -61,8 +61,6 @@ def get_vocabulary(fobj, is_dict=False):
             try:
                 if len(line.strip().split(' ')) == 2:
                     word, count = line.strip().split(' ')
-                else:
-                    print("bug, line: {}".format(line))
             except:
                 print('Failed reading vocabulary file at line {0}: {1}'.format(i, line))
                 # sys.exit(1)

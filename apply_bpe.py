@@ -43,8 +43,6 @@ class BPE(object):
             if (n < merges or merges == -1):
                 if len(tuple(item.split())) == 2:
                     self.bpe_codes.append(tuple(item.split()))
-                else:
-                    print("bug2 {}".format(str(tuple(item.split()))))
 
         # some hacking to deal with duplicates (only consider first instance)
         self.bpe_codes = dict([(code, i) for (i, code) in reversed(list(enumerate(self.bpe_codes)))])
