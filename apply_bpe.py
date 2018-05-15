@@ -269,7 +269,7 @@ def read_vocabulary(vocab_file, threshold):
             if threshold == None or freq >= threshold:
                 vocabulary.add(word)
         else:
-            print("bug3: {}".format(line))
+            pass #print("bug3: {}".format(line))
 
     return vocabulary
 
